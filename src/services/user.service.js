@@ -1,5 +1,10 @@
+const {User} = require("../models/index")
+
 module.exports = {
-    getUsers: () => {
-        return [1,2,3]
+    getUsers: async () => {
+        const users = await User.findAll({
+            attributes: {exclude: "password"},
+        })
+        return users
     }
 }
